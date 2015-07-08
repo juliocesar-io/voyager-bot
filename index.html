@@ -1,0 +1,69 @@
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://localhost:2525/keypress.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var listener = new window.keypress.Listener();
+      var socket = io.connect();
+
+      var my_combos = listener.register_many([
+          {
+              "keys": "up",
+              "on_keydown": function() {
+                  console.log("Client: Going forward");
+                  socket.emit('goForward');
+              },
+              "on_keyup": function(e) {
+                  console.log("Client: Stop!");
+                  socket.emit('stop');
+              }
+          }, {
+              "keys": "down",
+              "on_keydown": function() {
+                  console.log("Client: Going backward");
+                  socket.emit('goBackward');
+              },
+              "on_keyup": function(e) {
+                  console.log("Client: Stop!");
+                  socket.emit('stop');
+              }
+
+          },{
+              "keys": "left",
+              "on_keydown": function() {
+                  console.log("Client: Turning left");
+                  socket.emit('turnLeft');
+              },
+              "on_keyup": function(e) {
+                  console.log("Client: Stop!");
+                  socket.emit('stop');
+              }
+
+          },{
+              "keys": "right",
+              "on_keydown": function() {
+                  console.log("Client: Turning right");
+                  socket.emit('turnRight');
+              },
+              "on_keyup": function(e) {
+                  console.log("Client: Stop!");
+                  socket.emit('stop');
+              }
+          }
+
+    ]);
+
+
+
+
+
+    });
+  </script>
+</head>
+<body style="text-align:center;">
+  <h1>Voyager bot</h1>
+</body>
+</html>

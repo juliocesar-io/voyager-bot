@@ -118,7 +118,7 @@ app.listen(8000, function () {
 That will serve the `index.html` which hold the Socket client.
 
 
-For handle browser events we use jQuery and keypress in order to detect when a key is pressed then and do a socket emit.
+For handle browser events we use jQuery and keypress in order to detect when a key is pressed then and do a `socket emit`.
 
 ```js
 "keys": "up",
@@ -127,7 +127,7 @@ For handle browser events we use jQuery and keypress in order to detect when a k
     socket.emit('goForward');
 ```
 
-The server in listens up
+From the server side we listen to the emit using`socket on`
 
 ```js
 socket.on('goForward', function(){

@@ -12,7 +12,7 @@ RUN \
 
 # Install Arduino
 
-RUN apt-get install arduino
+RUN apt-get install -y arduino
 
 # Install dependencies
 

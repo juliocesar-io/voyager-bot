@@ -1,0 +1,22 @@
+
+map -sP 172.20.91.225/24 | grep black-pearl
+
+cat /etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+iface eth0 inet dhcp
+
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+	wpa-ssid "Ucc_Academica"
+	wpa-psk "Estu2015Ucc*"
+
+
+
+git clone http://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+cp linux-firmware/rt2870.bin /lib/firmware/rt2870.bin
+
+
+ssh -v root@172.20.92.249

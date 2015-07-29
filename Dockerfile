@@ -1,16 +1,18 @@
-FROM resin/rpi-raspbian:jessie
+FROM resin/rpi-raspbian:wheezy
 MAINTAINER Julio César <julioc255io@gmail.com>
+
 RUN apt-get update
-RUN apt-get install -y wget dialog
+# Install Node.js (from tarball)
+ENV NODE_VERSION 0.12.0
+ADD http://assets.hypriot.com/node-v${NODE_VERSION}-linux-armv6hf.tar.gz /
+RUN \
+  cd /usr/local/ && \
+  tar --strip-components 1 -xzf /node-v${NODE_VERSION}-linux-armv6hf.tar.gz && \
+  rm -f node-v${NODE_VERSION}-linux-armv6hf.tar.gz
 
-# Build latest version of Node.js
+# Install Arduino
 
-RUN wget http://nodejs.org/dist/v0.10.2/node-v0.10.2.tar.gz \
-    && tar -xzf node-v0.10.2.tar.gz \
-    && cd node-v0.10.2 \
-    && ./configure \
-    && make \
-    && make install
+RUN apt-get install arduino
 
 # Install dependencies
 

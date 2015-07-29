@@ -140,4 +140,4 @@ socket.on('goForward', function(){
 
 Containers are a really good idea for Iot projects because we can isolate our app on a kernel level and that means portability across machines, rapid application deployment,  those are crucial processes for Iot projects.
 
-..
+But Docker, which is a de facto standard, does not support ARM. So it is not yet support for Raspberry pi, fortunatly some hackers make a Docker Image for Raspberry Pi, they called [Hypriot](http://blog.hypriot.com/downloads/)

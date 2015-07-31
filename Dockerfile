@@ -2,11 +2,15 @@ FROM resin/rpi-raspbian:wheezy
 MAINTAINER Julio César <julioc255io@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -y curl
+RUN apt-get upgrade -y
 
-# Install Nodejs from adafruit
-RUN curl -sLS https://apt.adafruit.com/add | sudo bash
-RUN apt-get install -y --force-yes node
+RUN apt-get install -y build-essential
+RUN apt-get install -y python
+RUN apt-get install -y wget
+
+# Install Nodejs 0.10.xx for compatibility with serialport
+RUN wget http://node-arm.herokuapp.com/node_0.10.36-1_armhf.deb
+RUN dpkg -i node_0.10.36-1_armhf.deb
 
 # Install Arduino
 RUN apt-get install -y --force-yes arduino

@@ -22,3 +22,5 @@ cp linux-firmware/rt2870.bin /lib/firmware/rt2870.bin
 ssh -v root@172.20.92.249
 ssh root@black-pearl.local
 pass 123
+
+docker run --privileged -v /dev/bus/usb:/dev/bus/usb

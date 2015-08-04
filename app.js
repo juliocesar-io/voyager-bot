@@ -78,7 +78,7 @@ function startStreaming(io) {
 }
 
 
-board = new five.Board();
+board = new five.Board({ port: "/dev/ttyACM0" });
 
 board.on("ready", function() {
   that = this;

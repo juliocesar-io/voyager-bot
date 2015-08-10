@@ -140,4 +140,38 @@ socket.on('goForward', function(){
 
 Containers are a really good idea for Iot projects because we can isolate our app on a kernel level and that means portability across machines, rapid application deployment,  those are crucial processes for Iot projects.
 
-But Docker, which is a de facto standard, does not support ARM. So it is not yet support for Raspberry pi, fortunatly some hackers make a Docker Image for Raspberry Pi, they called [Hypriot](http://blog.hypriot.com/downloads/)
+But Docker, which is a de facto standard, does not support ARM. So it is not yet support for Raspberry pi, fortunately some hackers make a Docker Image for Raspberry Pi, they called [Hypriot](http://blog.hypriot.com/downloads/).
+
+Install Hypriot in your Raspberry pi. See this [guide]()
+
+
+Now login into your pi.
+
+
+Get the repo
+
+```bash
+$ git clone https://github.com/juliocesar-io/voyager-bot.git
+```
+
+```
+cd voyager-bot
+```
+
+Build the image
+
+```
+$ docker build -t <your_tag_name> .
+```
+
+Connect the Arduino(Flashed with Firmata) to the Raspberry pi.
+
+Run the container
+
+```
+$ docker run --device=/dev/ttyACM0 <your_tag_name>
+```
+
+Notice that we flag the `--device=/dev/ttyACM0` it's important to define this, it won't work if you don't use the correct port, check it with `lsusb`.
+
+> See the result in your browser, `http://<container_ip>:3000`

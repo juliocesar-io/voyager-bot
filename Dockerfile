@@ -19,3 +19,7 @@ RUN apt-get install -y --force-yes arduino
 WORKDIR /usr/src/voyager-bot/
 COPY . /usr/src/voyager-bot/
 RUN npm install
+
+EXPOSE 3000
+
+CMD ["node" "app.js"]

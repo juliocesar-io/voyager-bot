@@ -25,6 +25,10 @@ app.get('/keypress.js', function(req, res) {
   res.sendFile(__dirname + '/keypress.js');
 });
 
+app.get('/status.css', function(req, res) {
+  res.sendFile(__dirname + '/status.css');
+});
+
 var sockets = {};
 
 io.on('connection', function(socket) {
@@ -81,6 +85,32 @@ function startStreaming(io) {
 board = new five.Board({ port: "/dev/ttyACM0" });
 
 board.on("ready", function() {
+
+
+    var temperature = new five.Temperature({
+        controller: "LM35",
+        pin: "A0"
+      });
+
+
+
+      temperature.on("data", function() {
+        //console.log(this.celsius + "°C", this.fahrenheit + "°F");
+        io.sockets.emit('celsius', this.celsius);
+        });
+
+
+    var stepper = new five.Stepper({
+      type: five.Stepper.TYPE.FOUR_WIRE,
+      stepsPerRev: 200,
+      pins: [1, 2, 3, 4]
+    });
+
+    stepper.rpm(180).ccw().step(2000, function() {
+      console.log("done");
+    });
+
+
   that = this;
   led = new five.Led(13);
 

@@ -18,23 +18,6 @@ En sitio estara la documentacion, el software y recursos audiovisuales asociados
 
 -----------
 
-Contenidos
-----------
-
-Los contenidos estan organizados desde un pequeña introduccion y justificacion del porque de este proyecto, seguido de una analisis de requerimientos formal para asi obtener la mejor arquitectura y diseño posible de tanto el software como el hardware que cumpla con el objetivo de este proyecto.
-
-
-.. toctree::
-   :maxdepth: 2
-
-   introduccion
-   objetivos
-   justificacion
-   requerimientos
-   analisis
-   arquitectura
-   design
-
 
 Presentacion
 ------------
@@ -43,6 +26,22 @@ Presentacion
 
   <iframe src="https://slides.com/juliocesar_io/voyager-bot-proyecto-educativo-open-hardware-18/embed?style=light" width="696" height="520" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
+Contenidos
+----------
+
+  Los contenidos estan organizados desde un pequeña introduccion y justificacion del porque de este proyecto, seguido de una analisis de requerimientos formal para asi obtener la mejor arquitectura y diseño posible de tanto el software como el hardware que cumpla con el objetivo de este proyecto.
+
+
+  .. toctree::
+     :maxdepth: 2
+
+     introduccion
+     objetivos
+     justificacion
+     requerimientos
+     analisis
+     arquitectura
+     design
 
 
 -----------

@@ -97,11 +97,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);
         that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, this.SetSpeed());
+        that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
-        that.analogWrite(lMotorNB, this.SetSpeed());
+        that.analogWrite(lMotorNB, speed);
     });
 
     socket.on('goBackward', function(){
@@ -109,11 +109,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
-        that.analogWrite(rMotorNA, this.SetSpeed());
+        that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 1);
         that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, this.SetSpeed());
+        that.analogWrite(lMotorNB, speed);
     });
 
     socket.on('turnLeft', function(){
@@ -121,11 +121,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);
         that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, this.SetSpeed());
+        that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 1);
         that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, this.SetSpeed());
+        that.analogWrite(lMotorNB, speed);
     });
 
     socket.on('turnRight', function(){
@@ -133,11 +133,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
-        that.analogWrite(rMotorNA, this.SetSpeed());
+        that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
-        that.analogWrite(lMotorNB, this.SetSpeed());
+        that.analogWrite(lMotorNB, speed);
     });
 
 

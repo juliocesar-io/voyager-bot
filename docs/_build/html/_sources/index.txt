@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Proyecto Voyager |green|
-========================
+Proyecto Voyager
+================
 
-En sitio estara la documentacion, el software y recursos audiovisuales asociados al Proyecto Voyager realizado en el curso de ingenieria del Software I y II.
+En sitio estara la documentacion, software y recursos audiovisuales asociados al Proyecto Voyager realizado en el curso de ingenieria del Software I y II.
 
 
 .. raw:: html
@@ -42,6 +42,7 @@ Contenidos
      analisis
      arquitectura
      design
+     mercury
 
 
 -----------

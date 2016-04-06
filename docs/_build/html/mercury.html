@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mercury robot challenge 2016 &mdash; Voyager 0.5 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Voyager 0.5 documentation" href="index.html"/>
+        <link rel="prev" title="Diseño" href="design.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Voyager
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">Introduccion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objetivos.html">Objetivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="justificacion.html">Justificacion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requerimientos.html">Requerimientos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis.html">Analisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arquitectura.html">Arquitectura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Diseño</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Mercury robot challenge 2016</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#highlevel-block-diagram">High­level block diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#communication">Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-board">Main board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#video-feedback">Video feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cotroller-interface">Cotroller interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drive-train">Drive train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subsystems">Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#power">Power</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Voyager</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Mercury robot challenge 2016</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/mercury.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mercury-robot-challenge-2016">
+<h1>Mercury robot challenge 2016<a class="headerlink" href="#mercury-robot-challenge-2016" title="Permalink to this headline">¶</a></h1>
+<p><strong>Voyager</strong> Technical Document</p>
+<p><img alt="logo" src="_images/logo.png" /></p>
+<hr class="docutils" />
+<p><strong>Team</strong></p>
+<ul class="simple">
+<li>Julio Cesar Castellanos  - <a class="reference external" href="mailto:julio&#46;castellanosa&#37;&#52;&#48;campusucc&#46;edu&#46;co">julio<span>&#46;</span>castellanosa<span>&#64;</span>campusucc<span>&#46;</span>edu<span>&#46;</span>co</a></li>
+<li>Ivan Dario -  <a class="reference external" href="mailto:ivan&#46;ortizp&#37;&#52;&#48;campusucc&#46;edu&#46;co">ivan<span>&#46;</span>ortizp<span>&#64;</span>campusucc<span>&#46;</span>edu<span>&#46;</span>co</a></li>
+<li>Rafael Vergara - <a class="reference external" href="mailto:Rafael&#46;vergarah&#37;&#52;&#48;campusucc&#46;edu&#46;co">Rafael<span>&#46;</span>vergarah<span>&#64;</span>campusucc<span>&#46;</span>edu<span>&#46;</span>co</a></li>
+<li>Luis Villadiego - <a class="reference external" href="mailto:luis&#46;villadiego&#37;&#52;&#48;campusucc&#46;edu&#46;co">luis<span>&#46;</span>villadiego<span>&#64;</span>campusucc<span>&#46;</span>edu<span>&#46;</span>co</a></li>
+</ul>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This technical document describes the creation and specs of a remotely controlled robot. The Robot &#8220;Voyager&#8221;
+was designed and built to meet the requirements of the Oklahoma State University Mercury
+Robotics competition for 2016 in Bogota, Colombia.</p>
+</div>
+<div class="section" id="highlevel-block-diagram">
+<h2>High­level block diagram<a class="headerlink" href="#highlevel-block-diagram" title="Permalink to this headline">¶</a></h2>
+<p><img alt="dia" src="_images/dia.png" /></p>
+</div>
+<div class="section" id="communication">
+<h2>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h2>
+<p>The microcontroller will be conecte via serial to the raspberry pi, on the raspberry we use a Nodejs library in order to expose a real time socket web based server.
+For handle browser events we use jQuery and keypress in order to detect when a key is pressed then and do a socket emit.</p>
+</div>
+<div class="section" id="main-board">
+<h2>Main board<a class="headerlink" href="#main-board" title="Permalink to this headline">¶</a></h2>
+<p>The robot uses the Raspberri pi B+ as the principal board, this board allow the commnincation to a higer level user application using a  Sockect TCP server. It is attached direclty to the microcontroller via serial USB port.</p>
+</div>
+<div class="section" id="video-feedback">
+<h2>Video feedback<a class="headerlink" href="#video-feedback" title="Permalink to this headline">¶</a></h2>
+<p>The robot has a camera module attached to the raspberry pi, we expose this camera thougth a UDP video stream server.</p>
+</div>
+<div class="section" id="cotroller-interface">
+<h2>Cotroller interface<a class="headerlink" href="#cotroller-interface" title="Permalink to this headline">¶</a></h2>
+<p>We have a web based interface using HTML,CSS and Javascript to handle browser events.</p>
+</div>
+<div class="section" id="drive-train">
+<h2>Drive train<a class="headerlink" href="#drive-train" title="Permalink to this headline">¶</a></h2>
+<p>The robot has one motor per side, each running a tread through a gearbox with an encoder.</p>
+</div>
+<div class="section" id="subsystems">
+<h2>Subsystems<a class="headerlink" href="#subsystems" title="Permalink to this headline">¶</a></h2>
+<p>The robot has two Ultrasonic sensors......</p>
+</div>
+<div class="section" id="power">
+<h2>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h2>
+<p>The robot has a 7.2[V] standard 3000[mAh] NiMH battery.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="design.html" class="btn btn-neutral" title="Diseño" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2016, Secbi.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.5',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

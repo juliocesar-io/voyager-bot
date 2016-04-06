@@ -25,10 +25,6 @@ app.get('/keypress.js', function(req, res) {
   res.sendFile(__dirname + '/keypress.js');
 });
 
-app.get('/status.css', function(req, res) {
-  res.sendFile(__dirname + '/status.css');
-});
-
 var sockets = {};
 
 io.on('connection', function(socket) {
@@ -36,95 +32,27 @@ io.on('connection', function(socket) {
   sockets[socket.id] = socket;
   console.log("Clientes conectados ", Object.keys(sockets).length);
 
-  socket.on('disconnect', function() {
-    delete sockets[socket.id];
-
-    // no more sockets, kill the stream
-    if (Object.keys(sockets).length === 0) {
-      app.set('watchingFile', false);
-      if (proc) proc.kill();
-      fs.unwatchFile('./stream/image_stream.jpg');
-    }
-  });
-
-  socket.on('start-stream', function() {
-    startStreaming(io);
-  });
 
 });
-
-function stopStreaming() {
-  if (Object.keys(sockets).length === 0) {
-    app.set('watchingFile', false);
-    if (proc) proc.kill();
-    fs.unwatchFile('./stream/image_stream.jpg');
-  }
-}
-
-function startStreaming(io) {
-
-  if (app.get('watchingFile')) {
-    io.sockets.emit('liveStream', 'image_stream.jpg?_t=' + (Math.random() * 100000));
-    return;
-  }
-
-  var args = ["-w", "640", "-h", "480", "-o", "./stream/image_stream.jpg", "-t", "999999999", "-tl", "100"];
-  proc = spawn('raspistill', args);
-
-  console.log('Watching for changes...');
-
-  app.set('watchingFile', true);
-
-  fs.watchFile('./stream/image_stream.jpg', function(current, previous) {
-    io.sockets.emit('liveStream', 'image_stream.jpg?_t=' + (Math.random() * 100000));
-});
-
-}
-
 
 board = new five.Board({ port: "/dev/ttyACM0" });
 
 board.on("ready", function() {
-
-
-    var temperature = new five.Temperature({
-        controller: "LM35",
-        pin: "A0"
-      });
-
-
-
-      temperature.on("data", function() {
-        //console.log(this.celsius + "°C", this.fahrenheit + "°F");
-        io.sockets.emit('celsius', this.celsius);
-        });
-
-
-    var stepper = new five.Stepper({
-      type: five.Stepper.TYPE.FOUR_WIRE,
-      stepsPerRev: 200,
-      pins: [1, 2, 3, 4]
-    });
-
-    stepper.rpm(180).ccw().step(2000, function() {
-      console.log("done");
-    });
-
-
   that = this;
   led = new five.Led(13);
 
-
+  STBY = 5;
   // Right motor
-  rMotorN1 = 42;
-  rMotorN2 = 44;
-  rMotorNA = 6;
+  rMotorN1 = 4;
+  rMotorN2 = 3;
+  rMotorNA = 2;
   // Left motor
-  lMotorN3 = 46;
-  lMotorN4 = 48;
-  lMotorNB = 7;
+  lMotorN3 = 7;
+  lMotorN4 = 6;
+  lMotorNB = 8;
 
   // Set H bridge pins
+ this.pinMode(STBY, five.Pin.OUTPUT);
  this.pinMode(rMotorN1, five.Pin.OUTPUT);
  this.pinMode(rMotorN2, five.Pin.OUTPUT);
  this.pinMode(rMotorNA, five.Pin.PWM);
@@ -133,7 +61,7 @@ board.on("ready", function() {
  this.pinMode(lMotorNB, five.Pin.PWM);
 
 
-
+ speed = 200;
 
   io.sockets.on('connection', function (socket) {
 
@@ -152,15 +80,16 @@ board.on("ready", function() {
     });
 
     socket.on('goForward', function(){
+	that.digitalWrite(STBY, 1);
         console.log("Server: Going forward! ");
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);
         that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, 255);
+        that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
-        that.analogWrite(lMotorNB, 255);
+        that.analogWrite(lMotorNB, speed);
     });
 
     socket.on('goBackward', function(){
@@ -168,11 +97,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
-        that.analogWrite(rMotorNA, 255);
+        that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 1);
         that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, 255);
+        that.analogWrite(lMotorNB, speed);
     });
 
     socket.on('turnLeft', function(){
@@ -180,11 +109,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);
         that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, 255);
+        that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 1);
         that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, 255);
+        that.analogWrite(lMotorNB, speed);
     });
 
     socket.on('turnRight', function(){
@@ -192,11 +121,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
-        that.analogWrite(rMotorNA, 255);
+        that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
-        that.analogWrite(lMotorNB, 255);
+        that.analogWrite(lMotorNB, speed);
     });
 
 

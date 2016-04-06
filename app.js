@@ -65,21 +65,15 @@ board.on("ready", function() {
 
   io.sockets.on('connection', function (socket) {
 
-
-    function SetSetSpeed(s) {
-
-      var a = s
-
-      return a
-
-    }
-
+    var speed = 100;
 
     socket.on('vel', function (data) {
 
       console.log("Nueva velocidad: " + data);
 
-      SetSpeed(data);
+      speed = data;
+
+      return speed
 
     });
 

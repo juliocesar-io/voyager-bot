@@ -70,6 +70,10 @@
           }
 
         ]);
+
+        $('#btn-vel').click(function() {
+          var velocidad_num = $('#vel').val());
+          socket.emit('vel', velocidad_num );
     });
 
 
@@ -96,10 +100,7 @@
 
 
       <script type="text/javascript">
-      $('#btn-vel').click(function() {
-          var velocidad_num = $('#vel').val());
-          var socket = io.connect();
-          socket.emit('vel', velocidad_num );
+
         });
 
       </script>

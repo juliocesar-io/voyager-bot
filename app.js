@@ -61,9 +61,27 @@ board.on("ready", function() {
  this.pinMode(lMotorNB, five.Pin.PWM);
 
 
- speed = 200;
+
 
   io.sockets.on('connection', function (socket) {
+
+
+    function SetSetSpeed(s) {
+
+      var a = s
+
+      return a
+
+    }
+
+
+    socket.on('vel', function (data) {
+
+      console.log("Nueva velocidad: " + data);
+
+      SetSpeed(data);
+
+    });
 
 
     socket.on('stop', function () {
@@ -85,11 +103,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);
         that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, speed);
+        that.analogWrite(rMotorNA, SetSpeed());
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
-        that.analogWrite(lMotorNB, speed);
+        that.analogWrite(lMotorNB, SetSpeed());
     });
 
     socket.on('goBackward', function(){
@@ -97,11 +115,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
-        that.analogWrite(rMotorNA, speed);
+        that.analogWrite(rMotorNA, SetSpeed());
         // Turn on left motor
         that.digitalWrite(lMotorN3, 1);
         that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, speed);
+        that.analogWrite(lMotorNB, SetSpeed());
     });
 
     socket.on('turnLeft', function(){
@@ -109,11 +127,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);
         that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, speed);
+        that.analogWrite(rMotorNA, SetSpeed());
         // Turn on left motor
         that.digitalWrite(lMotorN3, 1);
         that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, speed);
+        that.analogWrite(lMotorNB, SetSpeed());
     });
 
     socket.on('turnRight', function(){
@@ -121,11 +139,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
-        that.analogWrite(rMotorNA, speed);
+        that.analogWrite(rMotorNA, SetSpeed());
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
-        that.analogWrite(lMotorNB, speed);
+        that.analogWrite(lMotorNB, SetSpeed());
     });
 
 

@@ -24,10 +24,6 @@
       var listener = new window.keypress.Listener();
       var socket = io.connect();
 
-      socket.on('celsius', function(celsius){
-          $("#celsius-text").text(celsius);
-      });
-
       var my_combos = listener.register_many([
           {
               "keys": "up",
@@ -73,18 +69,11 @@
               }
           }
 
-    ]);
-    });
-    var socket = io();
-    socket.on('liveStream', function(url) {
-        $('#stream').attr('src', url);
-        $('.start').hide();
+        ]);
     });
 
-    function startStream() {
-        socket.emit('start-stream');
-        $('.start').hide();
-    }
+
+
   </script>
 </head>
 <body style="text-align:center;">
@@ -96,32 +85,29 @@
         <h1 class="text-center" style="
     margin: 0;
 ">Voyager-bot
-           <small>@juliocesar_io</small>
+           <small>@secbi_ucc</small>
          </h1>
     </div>
     <br>
 
 
+      <input id="vel" type="number" name="velocidad" placeholder="Valor entre 0 y 255">
+      <input id="btn-vel" type="submit" class="btn btn-info start" value="Aplicar Velocidad">
 
-    <!-- <button type="button" id="" class="btn btn-info start" onclick="startStream()">Iniciar camara</button>-->
 
-     <img style="width:300px" src="http://i.imgur.com/frN9rCR.png" alt="" />
+      <script type="text/javascript">
+      $('#btn-vel').click(function() {
+          var velocidad_num = $('#vel').val());
 
-     <div class="pulse">
+          socket.emit('vel', velocidad_num );
+        });
 
-       <span></span>
-       <i style="padding-top: 20px;" class="fa fa-wifi"></i>
-     </div>
-     <br>
-     <br>
-     <br>
-     <p class="active"><a    href="#"><span class="label label-danger">TEMPERATURA</span> <span id="celsius-text" class="badge"></span></a></p>
+      </script>
 
-<!--
- <div class="row">
-   <img src="" id="stream">
- </div>
--->
+
+
+
+
 
 </body>
 </html>

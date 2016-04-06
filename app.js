@@ -5,9 +5,12 @@ var express = require('express'),
     fs = require('fs'),
     five = require("johnny-five"),
     path = require('path');
+    oldAng = 90;
 
 var spawn = require('child_process').spawn;
 var proc;
+
+
 
 
 app.use('/', express.static(path.join(__dirname, 'stream')));
@@ -40,18 +43,8 @@ board = new five.Board({ port: "/dev/ttyACM0" });
 board.on("ready", function() {
   that = this;
   led = new five.Led(13);
-  myServo = new five.Servo(9);
 
-  board.repl.inject({
-    servo: myServo
-  });
 
-  myServo.sweep();
-
-  this.wait(5000, function(){
-    myServo.stop();
-    myServo.center();
-  });
 
   STBY = 5;
   // Right motor
@@ -71,6 +64,22 @@ board.on("ready", function() {
  this.pinMode(lMotorN3, five.Pin.OUTPUT);
  this.pinMode(lMotorN4, five.Pin.OUTPUT);
  this.pinMode(lMotorNB, five.Pin.PWM);
+
+
+ myServo = new five.Servo(9);
+
+  board.repl.inject({
+    servo: myServo
+  });
+
+
+  myServo.sweep();
+
+  this.wait(5000, function(){
+    myServo.stop();
+    myServo.to(oldAng);
+	    myServo.stop();
+  });
 
 
   io.sockets.on('connection', function (socket) {

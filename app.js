@@ -67,13 +67,13 @@ board.on("ready", function() {
 
     var speed = 100;
 
-    socket.on('vel', function (data) {
+    SetSpeed();
+
+    socket.on('vel', function SetSpeed(data) {
 
       console.log("Nueva velocidad: " + data);
 
       speed = data;
-
-      return speed
 
     });
 

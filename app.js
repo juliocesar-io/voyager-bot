@@ -48,6 +48,10 @@ board.on("ready", function() {
     servo: servo
   });
 
+  servo.sweep();
+  servo.to(90);
+  servo.to(180);
+
 
   STBY = 5;
   // Right motor

@@ -42,12 +42,6 @@ board.on("ready", function() {
   led = new five.Led(13);
   var servo = new five.Servo(9);
 
-
-  // Add servo to REPL (optional)
-  this.repl.inject({
-    servo: servo
-  });
-
   servo.sweep();
   servo.to(90);
   servo.to(180);

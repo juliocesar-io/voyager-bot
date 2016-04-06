@@ -40,6 +40,14 @@ board = new five.Board({ port: "/dev/ttyACM0" });
 board.on("ready", function() {
   that = this;
   led = new five.Led(13);
+  var servo = new five.Servo(9);
+
+
+  // Add servo to REPL (optional)
+  this.repl.inject({
+    servo: servo
+  });
+
 
   STBY = 5;
   // Right motor
@@ -61,66 +69,6 @@ board.on("ready", function() {
  this.pinMode(lMotorNB, five.Pin.PWM);
 
 
-
- // SERVO
-
- var servo = new five.Servo(9);
-
- // Servo alternate constructor with options
- /*
- var servo = new five.Servo({
-   id: "MyServo",     // User defined id
-   pin: 10,           // Which pin is it attached to?
-   type: "standard",  // Default: "standard". Use "continuous" for continuous rotation servos
-   range: [0,180],    // Default: 0-180
-   fps: 100,          // Used to calculate rate of movement between positions
-   invert: false,     // Invert all specified positions
-   startAt: 90,       // Immediately move to a degree
-   center: true,      // overrides startAt if true and moves the servo to the center of the range
-   specs: {           // Is it running at 5V or 3.3V?
-     speed: five.Servo.Continuous.speeds["@5.0V"]
-   }
- });
- */
-
-
- // Servo API
-
- // min()
- //
- // set the servo to the minimum degrees
- // defaults to 0
- //
- // eg. servo.min();
-
- // max()
- //
- // set the servo to the maximum degrees
- // defaults to 180
- //
- // eg. servo.max();
-
- // center()
- //
- // centers the servo to 90°
- //
- // servo.center();
-
- // to( deg )
- //
- // Moves the servo to position by degrees
- //
- // servo.to( 90 );
-
- // step( deg )
- //
- // step all servos by deg
- //
- // eg. array.step( -20 );
-
-
-
-
   io.sockets.on('connection', function (socket) {
 
     var speed = 100;
@@ -136,15 +84,14 @@ board.on("ready", function() {
 
     socket.on('brazoA', function () {
       console.log("Brazo abierto! ");
-      servo.to( 90 );
+      servo.sweep();
+      servo.to(90);
     });
 
     socket.on('brazoB', function () {
       console.log("Brazo cerrado! ");
-      servo.to( 180 );
+      servo.to(180);
     });
-
-
 
     socket.on('stop', function () {
         console.log("Server: Stop! ");
@@ -160,7 +107,7 @@ board.on("ready", function() {
     });
 
     socket.on('goForward', function(){
-	that.digitalWrite(STBY, 1);
+	      that.digitalWrite(STBY, 1);
         console.log("Server: Going forward! ");
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);

@@ -40,12 +40,18 @@ board = new five.Board({ port: "/dev/ttyACM0" });
 board.on("ready", function() {
   that = this;
   led = new five.Led(13);
-  var servo = new five.Servo(9);
+  myServo = new five.Servo(9);
 
-  servo.sweep();
-  servo.to(90);
-  servo.to(180);
+  board.repl.inject({
+    servo: myServo
+  });
 
+  myServo.sweep();
+
+  this.wait(5000, function(){
+    myServo.stop();
+    myServo.center();
+  });
 
   STBY = 5;
   // Right motor
@@ -80,6 +86,8 @@ board.on("ready", function() {
     });
 
 
+
+/*
     socket.on('brazoA', function () {
       console.log("Brazo abierto! ");
       servo.sweep();
@@ -90,7 +98,7 @@ board.on("ready", function() {
       console.log("Brazo cerrado! ");
       servo.to(180);
     });
-
+*/
     socket.on('stop', function () {
         console.log("Server: Stop! ");
         // Turn off right motor

@@ -104,13 +104,13 @@ board.on("ready", function() {
  //
  // centers the servo to 90°
  //
- // servo.center();
+ servo.center();
 
  // to( deg )
  //
  // Moves the servo to position by degrees
  //
- // servo.to( 90 );
+ servo.to( 180 );
 
  // step( deg )
  //
@@ -118,7 +118,7 @@ board.on("ready", function() {
  //
  // eg. array.step( -20 );
 
- servo.sweep();
+ //servo.sweep();
 
 
   io.sockets.on('connection', function (socket) {

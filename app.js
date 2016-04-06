@@ -64,13 +64,13 @@ board.on("ready", function() {
 
  // SERVO
 
-
+ var servo = new five.Servo(9);
 
  // Servo alternate constructor with options
-
+ /*
  var servo = new five.Servo({
    id: "MyServo",     // User defined id
-   pin: 9,           // Which pin is it attached to?
+   pin: 10,           // Which pin is it attached to?
    type: "standard",  // Default: "standard". Use "continuous" for continuous rotation servos
    range: [0,180],    // Default: 0-180
    fps: 100,          // Used to calculate rate of movement between positions
@@ -81,7 +81,7 @@ board.on("ready", function() {
      speed: five.Servo.Continuous.speeds["@5.0V"]
    }
  });
-
+ */
 
 
  // Servo API
@@ -104,13 +104,13 @@ board.on("ready", function() {
  //
  // centers the servo to 90°
  //
- servo.center();
+ // servo.center();
 
  // to( deg )
  //
  // Moves the servo to position by degrees
  //
- servo.to( 180 );
+ // servo.to( 90 );
 
  // step( deg )
  //
@@ -118,7 +118,7 @@ board.on("ready", function() {
  //
  // eg. array.step( -20 );
 
- //servo.sweep();
+
 
 
   io.sockets.on('connection', function (socket) {
@@ -132,6 +132,18 @@ board.on("ready", function() {
       speed = data;
 
     });
+
+
+    socket.on('brazoA', function () {
+      console.log("Brazo abierto! ");
+      servo.to( 90 );
+    });
+
+    socket.on('brazoB', function () {
+      console.log("Brazo cerrado! ");
+      servo.to( 180 );
+    });
+
 
 
     socket.on('stop', function () {

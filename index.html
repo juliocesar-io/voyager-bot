@@ -67,6 +67,17 @@
                   console.log("Client: Stop!");
                   socket.emit('stop');
               }
+          }, {
+            "keys": "a",
+            "on_keydown": function() {
+                console.log("Moviendo Brazo!");
+                socket.emit('brazoA');
+            },
+            "on_keyup": function(e) {
+                console.log("Moviendo Brazo!");
+                socket.emit('brazoB');
+            }
+
           }
 
         ]);

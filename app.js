@@ -103,11 +103,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);
         that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, SetSpeed());
+        that.analogWrite(rMotorNA, this.SetSpeed());
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
-        that.analogWrite(lMotorNB, SetSpeed());
+        that.analogWrite(lMotorNB, this.SetSpeed());
     });
 
     socket.on('goBackward', function(){
@@ -115,11 +115,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
-        that.analogWrite(rMotorNA, SetSpeed());
+        that.analogWrite(rMotorNA, this.SetSpeed());
         // Turn on left motor
         that.digitalWrite(lMotorN3, 1);
         that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, SetSpeed());
+        that.analogWrite(lMotorNB, this.SetSpeed());
     });
 
     socket.on('turnLeft', function(){
@@ -127,11 +127,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);
         that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, SetSpeed());
+        that.analogWrite(rMotorNA, this.SetSpeed());
         // Turn on left motor
         that.digitalWrite(lMotorN3, 1);
         that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, SetSpeed());
+        that.analogWrite(lMotorNB, this.SetSpeed());
     });
 
     socket.on('turnRight', function(){
@@ -139,11 +139,11 @@ board.on("ready", function() {
         // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
-        that.analogWrite(rMotorNA, SetSpeed());
+        that.analogWrite(rMotorNA, this.SetSpeed());
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
-        that.analogWrite(lMotorNB, SetSpeed());
+        that.analogWrite(lMotorNB, this.SetSpeed());
     });
 
 

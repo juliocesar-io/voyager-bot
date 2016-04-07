@@ -5,7 +5,6 @@ var express = require('express'),
     fs = require('fs'),
     five = require("johnny-five"),
     path = require('path');
-    oldAng = 90;
 
 var spawn = require('child_process').spawn;
 var proc;
@@ -27,6 +26,15 @@ app.get('/', function(req, res) {
 app.get('/keypress.js', function(req, res) {
   res.sendFile(__dirname + '/keypress.js');
 });
+app.get('/jquery.min.js', function(req, res) {
+  res.sendFile(__dirname + '/jquery.min.js');
+});
+app.get('/font-awesome.min.css', function(req, res) {
+  res.sendFile(__dirname + '/font-awesome.min.css');
+});
+app.get('/bootstrap.min.css', function(req, res) {
+  res.sendFile(__dirname + '/bootstrap.min.css');
+});
 
 var sockets = {};
 
@@ -38,12 +46,11 @@ io.on('connection', function(socket) {
 
 });
 
-board = new five.Board({ port: "/dev/ttyACM0" });
+board = new five.Board();
 
 board.on("ready", function() {
-  that = this;
-  led = new five.Led(13);
 
+  that = this;
 
 
   STBY = 5;
@@ -55,6 +62,7 @@ board.on("ready", function() {
   lMotorN3 = 7;
   lMotorN4 = 6;
   lMotorNB = 8;
+  luz = 52;
 
   // Set H bridge pins
  this.pinMode(STBY, five.Pin.OUTPUT);
@@ -63,23 +71,34 @@ board.on("ready", function() {
  this.pinMode(rMotorNA, five.Pin.PWM);
  this.pinMode(lMotorN3, five.Pin.OUTPUT);
  this.pinMode(lMotorN4, five.Pin.OUTPUT);
+ this.pinMode(luz, five.Pin.OUTPUT);
  this.pinMode(lMotorNB, five.Pin.PWM);
 
+ this.digitalWrite(luz, 1);
 
- myServo = new five.Servo(9);
+ //
 
-  board.repl.inject({
-    servo: myServo
+  var servoBrazo = new five.Servo({
+    pin: 9,
+    startAt: 90
   });
 
-
-  myServo.sweep();
-
-  this.wait(5000, function(){
-    myServo.stop();
-    myServo.to(oldAng);
-	    myServo.stop();
+  var servoPinza = new five.Servo({
+     pin: 10,
+     startAt: 180
   });
+
+  var servoCam = new five.Servo({
+     pin: 11,
+     startAt: 90
+   });
+
+   var servoDisparador = new five.Servo({
+     pin: 12,
+     startAt: 70
+   });
+
+
 
 
   io.sockets.on('connection', function (socket) {
@@ -94,20 +113,61 @@ board.on("ready", function() {
 
     });
 
+    socket.on('luzOn-Off', function (luzEstado) {
+      if (luzEstado == true) {
+
+        luzEstado = 0
 
 
-/*
-    socket.on('brazoA', function () {
-      console.log("Brazo abierto! ");
-      servo.sweep();
-      servo.to(90);
+      } else if (luzEstado == false) {
+
+        luzEstado = 1;
+
+      }
+        that.digitalWrite(luz, luzEstado);
+
     });
 
-    socket.on('brazoB', function () {
-      console.log("Brazo cerrado! ");
-      servo.to(180);
+    socket.on('DisparadorOn-Off', function (disparadorEstado) {
+
+      if (disparadorEstado == true) {
+
+        disparadorEstado = 170
+
+
+      } else if (disparadorEstado == false) {
+
+        disparadorEstado = 70;
+
+      }
+        servoDisparador.to(disparadorEstado);
+
     });
-*/
+
+    socket.on('pinzaA', function () {
+      servoPinza.to(180)
+    });
+
+    socket.on('pinzaD', function () {
+      servoPinza.to(90)
+    });
+
+    socket.on('brazoW', function () {
+      servoBrazo.to(180)
+    });
+
+    socket.on('brazoS', function () {
+      servoBrazo.to(90)
+    });
+
+    socket.on('servoCam', function (gradosCam) {
+      servoCam.to(gradosCam)
+    });
+
+
+
+
+
     socket.on('stop', function () {
         console.log("Server: Stop! ");
         // Turn off right motor

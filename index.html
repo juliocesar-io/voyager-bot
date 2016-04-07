@@ -2,10 +2,9 @@
 <head>
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="/status.css" media="screen" title="no title" charset="utf-8">
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link href="/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/font-awesome.min.css">
+  <script src="/jquery.min.js"></script>
   <script src="/keypress.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 
@@ -23,6 +22,11 @@
     $(document).ready(function() {
       var listener = new window.keypress.Listener();
       var socket = io.connect();
+
+      var luzEstado = 1;
+      var disparadorEstado = 1;
+
+      var gradosCam = 90;
 
       var my_combos = listener.register_many([
           {
@@ -70,12 +74,77 @@
           },{
             "keys": "a",
             "on_keydown": function() {
-                console.log("Moviendo Brazo!");
-                //socket.emit('brazoA');
+                socket.emit('pinzaA');
             },
             "on_keyup": function(e) {
-                console.log("Moviendo Brazo!");
+                console.log("--");
+            }
+          },{
+            "keys": "d",
+            "on_keydown": function() {
+                socket.emit('pinzaD');
+            },
+            "on_keyup": function(e) {
+                console.log("--");
+            }
+          },{
+            "keys": "w",
+            "on_keydown": function() {
+                socket.emit('brazoW');
+            },
+            "on_keyup": function(e) {
+                console.log("--");
                 //socket.emit('brazoB');
+            }
+          },{
+            "keys": "s",
+            "on_keydown": function() {
+                socket.emit('brazoS');
+            },
+            "on_keyup": function(e) {
+                console.log("--");
+            }
+          },{
+            "keys": "shift",
+            "on_keydown": function() {
+
+                luzEstado = !luzEstado;
+                console.log(luzEstado);
+                socket.emit('luzOn-Off', luzEstado );
+            },
+            "on_keyup": function(e) {
+              console.log("--");
+
+            }
+          },{
+            "keys": "space",
+            "on_keydown": function() {
+                disparadorEstado = !disparadorEstado;
+
+                socket.emit('DisparadorOn-Off', disparadorEstado);
+            },
+            "on_keyup": function(e) {
+              console.log("--");
+            }
+          },{
+            "keys": "q",
+            "on_keydown": function() {
+                gradosCam = gradosCam + 1
+                console.log(gradosCam);
+                socket.emit('servoCam', gradosCam);
+            },
+            "on_keyup": function(e) {
+              console.log("--");
+            }
+          },{
+            "keys": "e",
+            "on_keydown": function() {
+                gradosCam = gradosCam - 1
+                console.log(gradosCam);
+                socket.emit('servoCam', gradosCam);
+            },
+            "on_keyup": function(e) {
+              console.log("--");
             }
           }
 

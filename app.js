@@ -29,11 +29,29 @@ app.get('/keypress.js', function(req, res) {
 app.get('/jquery.min.js', function(req, res) {
   res.sendFile(__dirname + '/jquery.min.js');
 });
+app.get('/jquery-ui.min.js', function(req, res) {
+  res.sendFile(__dirname + '/jquery-ui.min.js');
+});
 app.get('/font-awesome.min.css', function(req, res) {
   res.sendFile(__dirname + '/font-awesome.min.css');
 });
 app.get('/bootstrap.min.css', function(req, res) {
   res.sendFile(__dirname + '/bootstrap.min.css');
+});
+app.get('/status.css', function(req, res) {
+  res.sendFile(__dirname + '/status.css');
+});
+app.get('/interstellar.js', function(req, res) {
+  res.sendFile(__dirname + '/interstellar.js');
+});
+app.get('/img/volume-empty.png', function(req, res) {
+  res.sendFile(__dirname + '/img/volume-empty.png');
+});
+app.get('/img/volume-full.png', function(req, res) {
+  res.sendFile(__dirname + '/img/volume-full.png');
+});
+app.get('/img/volume-knob.png', function(req, res) {
+  res.sendFile(__dirname + '/img/volume-knob.png');
 });
 
 var sockets = {};

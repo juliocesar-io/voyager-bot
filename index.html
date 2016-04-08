@@ -5,8 +5,10 @@
   <link href="/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/font-awesome.min.css">
   <script src="/jquery.min.js"></script>
+ <script src="/jquery-ui.min.js"></script>
   <script src="/keypress.js"></script>
   <script src="/socket.io/socket.io.js"></script>
+
 
 
   <style type="text/css">
@@ -129,7 +131,7 @@
           },{
             "keys": "q",
             "on_keydown": function() {
-                gradosCam = gradosCam + 1
+                gradosCam = gradosCam + 5
                 console.log(gradosCam);
                 socket.emit('servoCam', gradosCam);
             },
@@ -139,7 +141,7 @@
           },{
             "keys": "e",
             "on_keydown": function() {
-                gradosCam = gradosCam - 1
+                gradosCam = gradosCam - 5
                 console.log(gradosCam);
                 socket.emit('servoCam', gradosCam);
             },
@@ -176,20 +178,20 @@
     <br>
 
 
+      <div id="player">
+          <div id="volume"></div>
+      </div>
+      <p>
+        <i>Velocidad</i>
+      </p>
+
       <input id="vel" type="number" name="velocidad" placeholder="Valor entre 0 y 255">
-      <input id="btn-vel" type="submit" class="btn btn-info start" value="Aplicar Velocidad">
-
-
-      <script type="text/javascript">
-
-
-
-      </script>
-
+     <input id="btn-vel" type="submit" class="btn btn-info start" value="Aplicar Velocidad">
 
 
 
 
 
 </body>
+  <script src="/interstellar.js"></script>
 </html>

@@ -13,7 +13,7 @@
     margin: 0 auto;
     height:15px;
     width: 300px;
-    background: url('/img/volume-empty.png') no-repeat left top;
+    background: url('https://juliocesar.io/voyager_static/img/volume-empty.png') no-repeat left top;
   border: none;
   outline: none;
 }
@@ -22,7 +22,7 @@
     height:15px;
     width: 300px;
     position: absolute;
-    background: url('/img/volume-full.png') no-repeat left top;
+    background: url('https://juliocesar.io/voyager_static/img/volume-full.png') no-repeat left top;
   border: none;
   outline: none;
 }
@@ -30,7 +30,7 @@
 #volume .ui-slider-handle {
     width: 38px;
     height:39px;
-    background: url('/img/volume-knob.png') no-repeat left top;
+    background: url('https://juliocesar.io/voyager_static/img/volume-knob.png') no-repeat left top;
     position: absolute;
     margin-left: -15px;
     cursor: pointer;

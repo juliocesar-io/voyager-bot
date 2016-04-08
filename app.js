@@ -71,7 +71,6 @@ board.on("ready", function() {
   that = this;
 
 
-  STBY = 5;
   // Right motor
   rMotorN1 = 4;
   rMotorN2 = 3;
@@ -82,8 +81,7 @@ board.on("ready", function() {
   lMotorNB = 8;
   luz = 52;
 
-  // Set H bridge pins
- this.pinMode(STBY, five.Pin.OUTPUT);
+
  this.pinMode(rMotorN1, five.Pin.OUTPUT);
  this.pinMode(rMotorN2, five.Pin.OUTPUT);
  this.pinMode(rMotorNA, five.Pin.PWM);
@@ -107,7 +105,7 @@ board.on("ready", function() {
   });
 
   var servoCam = new five.Servo({
-     pin: 11,
+     pin: 5,
      startAt: 90
    });
 
@@ -200,7 +198,7 @@ board.on("ready", function() {
     });
 
     socket.on('goForward', function(){
-	      that.digitalWrite(STBY, 1);
+
         console.log("Server: Going forward! ");
         // Turn on right motor
         that.digitalWrite(rMotorN1, 1);

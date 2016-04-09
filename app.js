@@ -130,7 +130,7 @@ board.on("ready", function() {
     });
 
     socket.on('pinzaA', function () {
-      servoPinza.to(180)
+      servoPinza.to(200)
     });
 
     socket.on('pinzaD', function () {
@@ -138,7 +138,7 @@ board.on("ready", function() {
     });
 
     socket.on('brazoW', function () {
-      servoBrazo.to(180)
+      servoBrazo.to(150)
     });
 
     socket.on('brazoS', function () {

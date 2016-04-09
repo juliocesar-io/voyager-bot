@@ -194,24 +194,24 @@ board.on("ready", function() {
     socket.on('turnLeft', function(){
         console.log("Server: Turning left! ");
         // Turn on right motor
-        that.digitalWrite(rMotorN1, 1);
-        that.digitalWrite(rMotorN2, 0);
-        that.analogWrite(rMotorNA, speed);
-        // Turn on left motor
-        that.digitalWrite(lMotorN3, 1);
-        that.digitalWrite(lMotorN4, 0);
-        that.analogWrite(lMotorNB, speed);
-    });
-
-    socket.on('turnRight', function(){
-        console.log("Server: Turning right! ");
-        // Turn on right motor
         that.digitalWrite(rMotorN1, 0);
         that.digitalWrite(rMotorN2, 1);
         that.analogWrite(rMotorNA, speed);
         // Turn on left motor
         that.digitalWrite(lMotorN3, 0);
         that.digitalWrite(lMotorN4, 1);
+        that.analogWrite(lMotorNB, speed);
+    });
+
+    socket.on('turnRight', function(){
+        console.log("Server: Turning right! ");
+        // Turn on right motor
+        that.digitalWrite(rMotorN1, 1);
+        that.digitalWrite(rMotorN2, 0);
+        that.analogWrite(rMotorNA, speed);
+        // Turn on left motor
+        that.digitalWrite(lMotorN3, 1);
+        that.digitalWrite(lMotorN4, 0);
         that.analogWrite(lMotorNB, speed);
     });
 

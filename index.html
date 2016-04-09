@@ -107,6 +107,14 @@
                 console.log("--");
             }
           },{
+            "keys": "x",
+            "on_keydown": function() {
+                socket.emit('brazoX');
+            },
+            "on_keyup": function(e) {
+                console.log("--");
+            }
+          },{
             "keys": "shift",
             "on_keydown": function() {
 

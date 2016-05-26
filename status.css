@@ -1,9 +1,114 @@
 
+body{
+  padding: 100px 200px 0 200px;
+  background: url("img/tex.jpg");
+  background-size: cover;
+}
+
+.keys {
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  line-height: 8rem;
+  height: 16rem;
+}
+
+.keys div {
+
+  display: inline-block;
+  margin: 0 0.5rem;
+  height: 4rem;
+  width: 4rem;
+  line-height: 3.6rem;
+  text-align: center;
+  vertical-align: bottom;
+  color: white;
+  border-style: solid;
+  border-width: 0.4rem 0.45rem 0.6rem;
+  border-radius: 0.8rem;
+  border-color: #eee #858585 #424242 #212121;
+  background: #2b2728;
+  -moz-transition: all 80ms ease;
+  -o-transition: all 80ms ease;
+  -webkit-transition: all 80ms ease;
+  transition: all 80ms ease;
+}
+
+.keys .pressed {
+  border-bottom-width: 0.5rem;
+  text-shadow: 0 0 10px #23aadf;
+  color: #23aadf;
+}
+
+.key-wrapper {
+  position: relative;
+
+}
+
+.row {text-align: center;}
+
+.key {
+  margin: 3px 1px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  display: inline-block;
+  line-height: 52px;
+  text-align: center;
+  text-transform: uppercase;
+ 	-webkit-transition: .5s;
+		 -moz-transition: .5s;
+			 -o-transition: .5s;
+			-ms-transition: .5s;
+			  	transition: .5s;
+}
+
+.k32 {
+  width: 330px;
+}
+.k16 {
+width: 80px;
+}
+
+.active {
+  border: 2px  solid #23aadf;
+  color: #23aadf;
+  -webkit-transition: 0s;
+		 -moz-transition: 0s;
+			-ms-transition: 0s;
+			  	transition: 0s;
+}
+
+.menu {
+  float: left;
+  position: relative;
+  top:-200px;
+}
+.status-bar {
+  float: right;
+  position: relative;
+  top:-200px;
+  margin-right: 20px;
+}
+.menu li {
+  list-style: none;
+  text-align: left;
+}
+.panel {
+  background: white;
+  opacity: 0.95;
+}
 #player {
     width: 350px;
     height: 50px;
     position: relative;
     margin: 0 auto;
+
     top: 10px;
 }
 
@@ -36,4 +141,5 @@
     cursor: pointer;
     outline: none;
     border: none;
+    top: -40%;
 }

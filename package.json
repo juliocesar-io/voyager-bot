@@ -9,13 +9,13 @@
   "author": "Julio César",
   "license": "BSD",
   "dependencies": {
+    "express": "^4.13.4",
+    "express-stormpath": "^3.1.2",
     "johnny-five": "~0.8.85",
-    "socket.io": "~1.3.5",
-    "express": "~4.13.1"
+    "socket.io": "~1.3.5"
   },
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/juliocesar-io/voyager-bot.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliocesar-io/voyager-bot.git"
   }
-
 }

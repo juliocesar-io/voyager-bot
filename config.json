@@ -1,0 +1,10 @@
+{
+  "ip-static": "192.168.0.5",
+  "tcp-port": "3000",
+  "usb-port": "/dev/cu.usbmodem1421",
+  "board-description": "Arduino MEGA 2560",
+  "sensors": {
+    "prox": null,
+    "temp": null,
+  }
+}

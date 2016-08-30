@@ -1,6 +1,6 @@
 
 body{
-  padding: 100px 200px 0 200px;
+  padding: 100px 120px 0 120px;
   background: url("img/tex.jpg");
   background-size: cover;
 }
@@ -86,14 +86,17 @@ width: 80px;
 
 .menu {
   float: left;
-  position: relative;
-  top:-200px;
+  position: absolute;;
+  text-align: left;
+  top:150px;
 }
+
 .status-bar {
   float: right;
   position: relative;
   top:-200px;
   margin-right: 20px;
+  text-align: left;
 }
 .menu li {
   list-style: none;

@@ -4,28 +4,12 @@ var express = require('express'),
     io = require('socket.io')(http),
     fs = require('fs'),
     five = require("johnny-five"),
-    path = require('path'),
-    stormpath = require('express-stormpath');
+    path = require('path');
 
 var spawn = require('child_process').spawn;
 var proc;
 
 
-app.use(stormpath.init(app, {
-  client: {
-    apiKey: {
-      id: '6RCIP5CFZJ4SP432VE213RZQX',
-      secret: 'AmeXnuxhpeId/29IW29IvJ41iEYMVt06bs81PUxwFQs',
-    }
-  },
-  application: {
-    href: 'https://api.stormpath.com/v1/applications/7VG2xNNuikM9hRxuxHXWfH'
-  }
-}));
-
-app.on('stormpath.ready', function () {
-  console.log('Stormpath Ready');
-});
 
 
 app.use('/', express.static(path.join(__dirname, 'stream')));
@@ -35,7 +19,7 @@ http.listen(3000, function() {
 });
 
 
-app.get('/', stormpath.loginRequired, function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 

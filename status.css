@@ -1,7 +1,7 @@
 
 body{
   padding: 100px 120px 0 120px;
-  background: url("img/tex.jpg");
+  background: url("/img/tex.jpg");
   background-size: cover;
 }
 

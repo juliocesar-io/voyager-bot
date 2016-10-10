@@ -12,8 +12,7 @@
     "express": "^4.13.4",
     "express-stormpath": "^3.1.2",
     "johnny-five": "~0.8.85",
-    "socket.io": "~1.3.5",
-    "serialport": "~4.0.3"
+    "socket.io": "~1.3.5"
   },
   "repository": {
     "type": "git",

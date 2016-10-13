@@ -1,7 +1,7 @@
 
 body{
   padding: 100px 120px 0 120px;
-  background: url("/img/tex.jpg");
+  background: url("https://juliocesar.io/voyager_static/img/tex.jpg");
   background-size: cover;
 }
 
@@ -131,8 +131,8 @@ width: 80px;
     width: 300px;
     position: absolute;
     background: url('https://juliocesar.io/voyager_static/img/volume-full.png') no-repeat left top;
-  border: none;
-  outline: none;
+    border: none;
+    outline: none;
 }
 
 #volume .ui-slider-handle {

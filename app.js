@@ -22,34 +22,6 @@ http.listen(3000, function() {
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
-app.get('/interstellar.js', function(req, res) {
-  res.sendFile(__dirname + '/interstellar.js');
-});
-app.get('/img/logo.png', function(req, res) {
-  res.sendFile(__dirname + '/img/logo.png');
-});
-
-app.get('/status.css', function(req, res) {
-  res.sendFile(__dirname + '/status.css');
-});
-app.get('/img/tex.jpg', function(req, res) {
-  res.sendFile(__dirname + '/img/tex.jpg');
-});
-app.get('/bootstrap.min.css', function(req, res) {
-  res.sendFile(__dirname + '/bootstrap.min.css');
-});
-app.get('/font-awesome.min.css', function(req, res) {
-  res.sendFile(__dirname + '/font-awesome.min.css');
-});
-app.get('/jquery.min.js', function(req, res) {
-  res.sendFile(__dirname + '/jquery.min.js');
-});
-app.get('/jquery-ui.min.js', function(req, res) {
-  res.sendFile(__dirname + '/jquery-ui.min.js');
-});
-app.get('/keypress.js', function(req, res) {
-  res.sendFile(__dirname + '/keypress.js');
-});
 
 var sockets = {};
 
